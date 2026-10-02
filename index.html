@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+    <section id="telaInicial">
+    <div id="painelCentral"></div>
+    <a href="#ladoDireito" class="seta seta-direita" aria-label="Go to the right room">&#8594;</a>
+    <a href="#ladoEsquerdo" class="seta seta-esquerda" aria-label="Go to the left room">&#8592;</a>
+
+    </section>
+    
+    <section id="ladoDireito">
+        <div id="painelDireita"></div>
+    <a href="#telaInicial" class="seta seta-esquerda" aria-label="Return to the center room">&#8592;</a>
+
+    </section>
+    
+
+    <section id="ladoEsquerdo">
+        <div id="painelEsquerda">
+            <div class="conteudo-segredo" id="conteudoSegredo">
+                <h2>Evidence</h2>
+                <p></p>
+            </div>
+            <div class="folha-capa">
+                <p class="selo-confidencial">CONFIDENTIAL</p>
+                <button id="revelarSegredo" type="button" aria-expanded="false" aria-controls="conteudoSegredo">
+                    Subir capa
+                </button>
+            </div>
+            <div class="jornalBase">
+                <h2 class="titulo-jornal">CASAL SOB INVESTIGAÇÃO</h2>
+                <p class="conteudo-jornal">Urgente: casal imigrante está sendo investigado por absurdos.</p>
+                <img class="jornalImagem" src="./Gemini_Generated_Image_txcyuttxcyuttxcy.jpg" alt="Imagem do jornal">
+            </div>
+        </div>
+    <a href="#telaInicial" class="seta seta-direita" aria-label="Return to the center room">&#8594;</a>
+
+    </section>
+
+    </main>
+    <script src="./main.js" defer></script>
+</body>
+</html>
