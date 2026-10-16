@@ -1,50 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="theme-color" content="#24382e">
+    <title>Operação Contraste: O Caso Hernandez</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="./main.js" defer></script>
 </head>
 <body>
-    <main>
-    <section id="telaInicial">
-    <div id="painelCentral"></div>
-    <a href="#ladoDireito" class="seta seta-direita" aria-label="Go to the right room">&#8594;</a>
-    <a href="#ladoEsquerdo" class="seta seta-esquerda" aria-label="Go to the left room">&#8592;</a>
+    <div id="orientacaoMobile" class="orientacao-mobile" role="status" aria-live="polite">
+        <div class="orientacao-mobile__cartao">
+            <span class="orientacao-mobile__icone" aria-hidden="true">&#8635;</span>
+            <h1>Gire o celular</h1>
+            <p>Coloque o aparelho na horizontal para começar a investigação.</p>
+        </div>
+    </div>
 
+    <section id="telaEntrada" class="tela-entrada" aria-labelledby="titulo-entrada">
+        <div class="tela-entrada__arquivo">
+            <p class="tela-entrada__selo">ARQUIVO POLICIAL · CONFIDENCIAL</p>
+            <p class="tela-entrada__sigla" aria-hidden="true">OC</p>
+            <p class="tela-entrada__sobretitulo">UMA INVESTIGAÇÃO INTERATIVA</p>
+            <h1 id="titulo-entrada">Operação Contraste</h1>
+            <p class="tela-entrada__subtitulo">O Caso Hernandez</p>
+            <p class="tela-entrada__descricao">Oito documentos. Oito desafios. Uma cidade dividida por desigualdades. Examine as evidências e descubra como elas se conectam.</p>
+            <form id="formularioEntrada" class="formulario-entrada">
+                <label for="nomeInvestigador">Digite seu nome, investigador(a)</label>
+                <input id="nomeInvestigador" name="nome" type="text" maxlength="32" autocomplete="name" placeholder="Seu nome" required>
+                <button type="submit">Abrir investigação</button>
+                <p class="tela-entrada__nota">A cidade, os personagens e os dados do caso são fictícios.</p>
+            </form>
+        </div>
     </section>
-    
-    <section id="ladoDireito">
-        <div id="painelDireita"></div>
-    <a href="#telaInicial" class="seta seta-esquerda" aria-label="Return to the center room">&#8592;</a>
 
-    </section>
-    
+    <main id="jogo" tabindex="-1" hidden inert>
+        <header class="barra-superior">
+            <a class="marca-jogo" href="#quadro-inicial">
+                <span class="marca-jogo__selo" aria-hidden="true">OC</span>
+                <span>
+                    <strong>Operação Contraste</strong>
+                    <small>O Caso Hernandez</small>
+                </span>
+            </a>
+            <p class="identificacao-investigador">INVESTIGADOR <strong id="nomeExibido">Investigador(a)</strong></p>
+            <p id="progresso" class="progresso-jogo" aria-live="polite">Evidências analisadas: 0/8</p>
+        </header>
 
-    <section id="ladoEsquerdo">
-        <div id="painelEsquerda">
-            <div class="conteudo-segredo" id="conteudoSegredo">
-                <h2>Evidence</h2>
-                <p></p>
-            </div>
-            <div class="folha-capa">
-                <p class="selo-confidencial">CONFIDENTIAL</p>
-                <button id="revelarSegredo" type="button" aria-expanded="false" aria-controls="conteudoSegredo">
-                    Subir capa
-                </button>
-            </div>
-            <div class="jornalBase">
-                <h2 class="titulo-jornal">CASAL SOB INVESTIGAÇÃO</h2>
-                <p class="conteudo-jornal">Urgente: casal imigrante está sendo investigado por absurdos.</p>
-                <img class="jornalImagem" src="./Gemini_Generated_Image_txcyuttxcyuttxcy.jpg" alt="Imagem do jornal">
+        <div class="salas" aria-label="Quadros da investigação">
+            <section id="quadro-inicial" class="sala" aria-labelledby="titulo-inicial">
+                <div class="quadro-investigacao">
+                    <header class="cabecalho-quadro">
+                        <div>
+                            <p class="etiqueta-arquivo">ARQUIVO CENTRAL · 01–03</p>
+                            <h1 id="titulo-inicial">O início da investigação</h1>
+                            <p class="instrucao-quadro">O Chefe entregou a Diego os primeiros recortes. Examine os jornais e relacione os dados.</p>
+                        </div>
+                        <span class="carimbo">CONFIDENCIAL</span>
+                    </header>
+                    <div class="briefing">
+                        <strong>ORDENS DO CHEFE</strong>
+                        <p>O casal Hernandez é suspeito de lucrar com uma rede que explora pessoas em situação de vulnerabilidade. Analise as evidências antes de tirar conclusões: pobreza ou uma abordagem policial, por si só, não provam liderança criminosa. A cidade, os personagens e os dados deste arquivo são fictícios.</p>
+                    </div>
+                    <div id="documentos-iniciais" class="grade-documentos" aria-label="Jornais do arquivo inicial"></div>
+                    <nav class="navegacao-quadros" aria-label="Navegação dos quadros">
+                        <span class="navegacao-inativa" aria-hidden="true">← Quadro anterior</span>
+                        <a href="#quadro-intermediario">Próximo quadro →</a>
+                    </nav>
+                </div>
+            </section>
+
+            <section id="quadro-intermediario" class="sala" aria-labelledby="titulo-intermediario">
+                <div class="quadro-investigacao">
+                    <header class="cabecalho-quadro">
+                        <div>
+                            <p class="etiqueta-arquivo">ARQUIVO DE CAMPO · 04–06</p>
+                            <h2 id="titulo-intermediario">Território, tempo e suspeitas</h2>
+                            <p class="instrucao-quadro">Compare versões, coloque os acontecimentos em ordem e leia o mapa com cuidado.</p>
+                        </div>
+                        <span class="carimbo carimbo--azul">EM ANÁLISE</span>
+                    </header>
+                    <div id="documentos-intermediarios" class="grade-documentos" aria-label="Jornais do arquivo de campo"></div>
+                    <nav class="navegacao-quadros" aria-label="Navegação dos quadros">
+                        <a href="#quadro-inicial">← Quadro inicial</a>
+                        <a href="#quadro-final">Próximo quadro →</a>
+                    </nav>
+                </div>
+            </section>
+
+            <section id="quadro-final" class="sala" aria-labelledby="titulo-final">
+                <div class="quadro-investigacao">
+                    <header class="cabecalho-quadro">
+                        <div>
+                            <p class="etiqueta-arquivo">ARQUIVO DE CONCLUSÃO · 07–08</p>
+                            <h2 id="titulo-final">A rota e o cofre</h2>
+                            <p class="instrucao-quadro">Cruze os registros finais para reconstruir a operação e consolidar as provas.</p>
+                        </div>
+                        <span class="carimbo carimbo--vermelho">URGENTE</span>
+                    </header>
+                    <div id="documentos-finais" class="grade-documentos grade-documentos--dupla" aria-label="Jornais do arquivo final"></div>
+                    <div id="desfecho" class="desfecho" hidden>
+                        <strong>RELATÓRIO FINAL PRONTO</strong>
+                        <p>As evidências conectam as movimentações financeiras, os deslocamentos e a exploração dos intermediários. A investigação responsabiliza os envolvidos com base em provas, sem confundir vulnerabilidade social com culpa. A operação foi interrompida; reduzir as desigualdades que permitiram a exploração exige políticas públicas e ações que vão além da investigação policial.</p>
+                    </div>
+                    <nav class="navegacao-quadros" aria-label="Navegação dos quadros">
+                        <a href="#quadro-intermediario">← Quadro de campo</a>
+                        <span class="navegacao-inativa" aria-hidden="true">Fim do arquivo</span>
+                    </nav>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <dialog id="documento-dialog" class="documento-dialog" aria-labelledby="dialog-titulo">
+        <div class="dialog-cabecalho">
+            <p id="dialog-fonte" class="etiqueta-arquivo"></p>
+            <button id="fechar-dialog" class="botao-fechar" type="button" aria-label="Fechar documento">×</button>
+        </div>
+        <div class="dialog-conteudo">
+            <figure class="imagem-documento">
+                <img id="dialog-imagem" src="" alt="">
+                <figcaption id="dialog-legenda"></figcaption>
+            </figure>
+            <div class="leitura-documento">
+                <p id="dialog-data" class="data-documento"></p>
+                <h2 id="dialog-titulo"></h2>
+                <p id="dialog-resumo" class="resumo-documento"></p>
+                <dl id="dialog-dados" class="dados-documento"></dl>
+                <section id="area-desafio" class="area-desafio" aria-live="polite"></section>
             </div>
         </div>
-    <a href="#telaInicial" class="seta seta-direita" aria-label="Return to the center room">&#8594;</a>
-
-    </section>
-
-    </main>
-    <script src="./main.js" defer></script>
+    </dialog>
 </body>
 </html>
