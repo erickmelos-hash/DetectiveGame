@@ -247,21 +247,10 @@ const startForm = document.querySelector("#formularioEntrada");
 const investigatorNameInput = document.querySelector("#nomeInvestigador");
 const displayedInvestigatorName = document.querySelector("#nomeExibido");
 const game = document.querySelector("#jogo");
-const orientationQuery = window.matchMedia("(max-width: 700px) and (orientation: portrait)");
 const documentDialog = document.querySelector("#documento-dialog");
 const closeDialogButton = document.querySelector("#fechar-dialog");
 const progressLabel = document.querySelector("#progresso");
 const completedDocuments = new Set();
-let gameStarted = false;
-
-function updateOrientationGate() {
-	game.inert = !gameStarted || orientationQuery.matches;
-}
-
-orientationQuery.addEventListener("change", updateOrientationGate);
-window.addEventListener("resize", updateOrientationGate);
-window.addEventListener("orientationchange", updateOrientationGate);
-updateOrientationGate();
 
 investigatorNameInput.addEventListener("input", () => {
 	investigatorNameInput.setCustomValidity("");
@@ -280,8 +269,7 @@ startForm.addEventListener("submit", (event) => {
 	displayedInvestigatorName.textContent = investigatorName;
 	startScreen.hidden = true;
 	game.hidden = false;
-	gameStarted = true;
-	updateOrientationGate();
+	game.inert = false;
 	game.focus();
 });
 
